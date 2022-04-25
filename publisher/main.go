@@ -10,6 +10,8 @@ func main() {
 	config := sarama.NewConfig()
 	config.Producer.RequiredAcks = sarama.WaitForAll
 	config.Producer.Return.Successes = true
+	// Allow auto create topic, default true
+	// config.Metadata.AllowAutoTopicCreation = false
 
 	client, err := sarama.NewSyncProducer([]string{"localhost:9092"}, config)
 	if err != nil {
